@@ -1,9 +1,20 @@
 package com.example.demo.student;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
+@Entity  // HIBERNATE  MAP STUDENT -> DB
+@Table
 public class Student {
-
+    @Id
+    @SequenceGenerator(
+            name = "students_sequence",
+            sequenceName = "students_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "students_sequence"
+    )
     private Long id;
     private String name;
     private String email;
