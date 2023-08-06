@@ -28,4 +28,12 @@ public class StudentController {
 	public void registerNewStudent(@RequestBody Student student){ //@RequestBody - map JSON from client to Student
 		studentService.addNewStudent(student);
 	}
+
+	// 	  DELETE MAPPING  - when want to delete exist resource from our system
+//	http://localhost:8080/api/v1/student/1    => /1 - is parameter which we take with @PathVariable - in our case studentId =1
+	@DeleteMapping(path = "{studentId}")  // {this is pass param in the URL and we want to take it}
+	public void deleteStudent(@PathVariable("studentId") Long studentId){
+		studentService.deleteStudent(studentId);
+	}
+
 }
