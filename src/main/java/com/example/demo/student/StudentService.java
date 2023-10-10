@@ -21,7 +21,7 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-
+        // TODO: fix this try with Optional
     @GetMapping
     public List<Student> getStudents(){
         return  studentRepository.findAll();

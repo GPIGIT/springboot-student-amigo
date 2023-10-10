@@ -37,10 +37,16 @@ public class StudentController {
 		studentService.deleteStudent(studentId);
 	}
 
+	//TODO: @RequestParams example
 	//   PUT MAPPING - when want to update record in our table
+	//URL - localhost:8080/api/v1/student/2?name=Anton&email=Anton@gmail.com - here the last part after "?' are key-value pairs it mena name of parameter and his values we try to take
+	// because we say in @RequestParam(required = false) are optional it mean we can have name or email and can not
+	// exmaples: localhost:8080/api/v1/student/2 or
+	// localhost:8080/api/v1/student/2?name=Anton or
+	// localhost:8080/api/v1/student/2?email=Anton@gmail.com or both - localhost:8080/api/v1/student/2?name=Anton&email=Anton@gmail.com
 	@PutMapping(path = "{studentId}")
 	public void updateStudent(@PathVariable("studentId") Long studentId,
-							  @RequestParam(required = false) String name,
+							  @RequestParam(required = false) String name, // @RequestParams(required = false) -> this mean that is optional param - parameter can or not  exist(passed from client)
 							  @RequestParam(required = false) String email) {
 		studentService.updateStudent(studentId, name, email);
 	}
